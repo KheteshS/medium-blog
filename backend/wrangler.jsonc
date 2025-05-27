@@ -8,7 +8,8 @@
   //   "nodejs_compat"
   // ],
   "vars": {
-    "DATABASE_URL": "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMDFKVzRGSjNDQTE2UUdQR1lOQjk3WkdQUzUiLCJ0ZW5hbnRfaWQiOiJkNGQ5MmJlMGIzYmRkZjRkZTQ1MTE1MWQ4YjI0YWFkM2M2YWZhMTI0ODhhMzYxYzExZGU5OGJjMzdlYzdmMGI5IiwiaW50ZXJuYWxfc2VjcmV0IjoiYjA5MmEwYTktYzg4MC00MjQ3LTk1ZDMtZDcwZTliYzMzMmQwIn0.2ecucgFm6i1jDbJWt66xsePlVJAK4bZL9TTwJnyn9R8"
+    "DATABASE_URL": "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMDFKVzRGSjNDQTE2UUdQR1lOQjk3WkdQUzUiLCJ0ZW5hbnRfaWQiOiJkNGQ5MmJlMGIzYmRkZjRkZTQ1MTE1MWQ4YjI0YWFkM2M2YWZhMTI0ODhhMzYxYzExZGU5OGJjMzdlYzdmMGI5IiwiaW50ZXJuYWxfc2VjcmV0IjoiYjA5MmEwYTktYzg4MC00MjQ3LTk1ZDMtZDcwZTliYzMzMmQwIn0.2ecucgFm6i1jDbJWt66xsePlVJAK4bZL9TTwJnyn9R8",
+    "JWT_SECRET": "MAI_NAHI_BATAUNGA"
   }
   // "kv_namespaces": [
   //   {
