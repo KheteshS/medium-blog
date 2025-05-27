@@ -1,3 +1,4 @@
+import { createBlogInput, updateBlogInput } from "@khetesh/medium-common";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
@@ -90,6 +91,17 @@ blogRouter.post("/", async (c) => {
   }).$extends(withAccelerate());
   const body = await c.req.json();
 
+  const { success } = createBlogInput.safeParse(body);
+
+  if (!success) {
+    return c.json(
+      {
+        message: "Inavlid inputs!",
+      },
+      411
+    );
+  }
+
   const blog = await prisma.blog.create({
     data: {
       title: body.title,
@@ -109,6 +121,17 @@ blogRouter.put("/", async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
   const body = await c.req.json();
+
+  const { success } = updateBlogInput.safeParse(body);
+
+  if (!success) {
+    return c.json(
+      {
+        message: "Inavlid inputs!",
+      },
+      411
+    );
+  }
 
   const blog = await prisma.blog.update({
     where: { id: body.id },

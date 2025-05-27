@@ -1,3 +1,4 @@
+import { signinInput, signupInput } from "@khetesh/medium-common";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
@@ -20,6 +21,16 @@ userRouter.post("/signup", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
+  const { success } = signupInput.safeParse(body);
+
+  if (!success) {
+    return c.json(
+      {
+        message: "Inavlid inputs!",
+      },
+      411
+    );
+  }
 
   try {
     const user = await prisma.user.create({
@@ -48,6 +59,16 @@ userRouter.post("/signin", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
+  const { success } = signinInput.safeParse(body);
+
+  if (!success) {
+    return c.json(
+      {
+        message: "Inavlid inputs!",
+      },
+      411
+    );
+  }
   try {
     const user = await prisma.user.findUnique({
       where: { email: body.email },
