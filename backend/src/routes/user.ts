@@ -21,12 +21,12 @@ userRouter.post("/signup", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
-  const { success } = signupInput.safeParse(body);
+  const parsedRes = signupInput.safeParse(body);
 
-  if (!success) {
+  if (!parsedRes.success) {
     return c.json(
       {
-        message: "Inavlid inputs!",
+        message: "Invalid inputs!",
       },
       411
     );
@@ -35,8 +35,9 @@ userRouter.post("/signup", async (c) => {
   try {
     const user = await prisma.user.create({
       data: {
-        email: body.email,
-        password: body.password,
+        email: parsedRes.data.email,
+        password: parsedRes.data.password,
+        name: parsedRes.data?.name,
       },
     });
 
@@ -59,19 +60,19 @@ userRouter.post("/signin", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
-  const { success } = signinInput.safeParse(body);
+  const parsedRes = signinInput.safeParse(body);
 
-  if (!success) {
+  if (!parsedRes.success) {
     return c.json(
       {
-        message: "Inavlid inputs!",
+        message: "Invalid inputs!",
       },
       411
     );
   }
   try {
     const user = await prisma.user.findUnique({
-      where: { email: body.email },
+      where: { email: parsedRes.data.email },
     });
 
     if (!user) {
