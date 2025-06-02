@@ -76,7 +76,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     <>
       <div className="h-screen flex justify-center ">
         <div className="flex flex-col justify-center">
-          <AuthHeader type="signup" />
+          <AuthHeader type={type} />
 
           <div className="pt-8">
             {type === "signup" ? (
