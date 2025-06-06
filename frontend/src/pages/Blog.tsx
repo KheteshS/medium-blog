@@ -13,7 +13,7 @@ export const Blog = () => {
   return (
     <div className="flex flex-col h-screen">
       <Appbar />
-      {loading ? (
+      {loading || !blog ? (
         <div className="h-full flex flex-col justify-center">
           <div className="flex justify-center">
             <Spinner />
